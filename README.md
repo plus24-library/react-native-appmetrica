@@ -43,7 +43,4 @@ AppMetrica.activateWithConfig({
 // Sends a custom event message and additional parameters (optional).
 AppMetrica.reportEvent('My event');
 AppMetrica.reportEvent('My event', { foo: 'bar' });
-
-// Send a custom error event.
-AppMetrica.reportError('My error');
-```
+AppMetrica.reportEvent('My event', { event1: { event2: { event3 : { event4: 'value' } } } });
