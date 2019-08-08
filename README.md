@@ -44,3 +44,6 @@ AppMetrica.activateWithConfig({
 AppMetrica.reportEvent('My event');
 AppMetrica.reportEvent('My event', { foo: 'bar' });
 AppMetrica.reportEvent('My event', { event1: { event2: { event3 : { event4: 'value' } } } });
+
+// reportRevenue
+AppMetrica.reportRevenue(500, "value");

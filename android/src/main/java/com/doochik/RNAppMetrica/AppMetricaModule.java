@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.YandexMetricaConfig;
+import com.yandex.metrica.Revenue;
+import java.util.Currency;
 
 public class AppMetricaModule extends ReactContextBaseJavaModule {
     final static String ModuleName = "AppMetrica";
@@ -75,6 +77,16 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
         } else {
             YandexMetrica.reportEvent(message);
         }
+    }
+
+    @ReactMethod
+    public void reportRevenue(double amount, String serviceName) {
+        Revenue revenue = Revenue.newBuilder(amount, Currency.getInstance("KZT"))
+                .withProductID(serviceName)
+                .withQuantity(1)
+                .withPayload("{\"plus24\":\"Android\"}")
+                .build();
+        YandexMetrica.reportRevenue(revenue);
     }
 
     @ReactMethod
