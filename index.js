@@ -42,7 +42,7 @@ export default {
      * @param {string} serviceName
      */
     reportRevenue(amount: number, serviceName: string) {
-        AppMetrica.reportRevenue(Number(amount), String(serviceName));
+        AppMetrica.reportRevenue(amount, serviceName);
     },
 
     /**
