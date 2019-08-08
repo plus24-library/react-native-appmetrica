@@ -71,7 +71,7 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void reportEvent(String message, @Nullable ReadableMap params) {
         if (params != null) {
-            YandexMetrica.reportEvent(message, convertReadableMapToJson(params));
+            YandexMetrica.reportEvent(message, convertReadableMapToJson(params).toString());
         } else {
             YandexMetrica.reportEvent(message);
         }
@@ -82,7 +82,7 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
         YandexMetrica.setUserProfileID(profileID);
     }
 
-    private String convertReadableMapToJson(final ReadableMap readableMap) {
+    private JSONObject convertReadableMapToJson(final ReadableMap readableMap) {
 		ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
         JSONObject json = new JSONObject();
 
@@ -117,6 +117,6 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
             Log.d(ModuleName, "convertReadableMapToJson fail: " + ex);
         }
 
-        return json.toString();
+        return json;
     }
 }
