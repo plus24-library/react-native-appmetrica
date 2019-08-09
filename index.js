@@ -31,7 +31,7 @@ export default {
      * @param {string} serviceName
      */
     reportRevenue(amount: string, serviceName: string) {
-        AppMetrica.reportRevenue(amount, serviceName);
+        AppMetrica.reportRevenue(Number(amount), serviceName);
     },
 
     /**

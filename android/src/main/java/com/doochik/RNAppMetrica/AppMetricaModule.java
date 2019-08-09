@@ -71,15 +71,6 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void reportEvent(String message, @Nullable ReadableMap params) {
-        if (params != null) {
-            YandexMetrica.reportEvent(message, convertReadableMapToJson(params).toString());
-        } else {
-            YandexMetrica.reportEvent(message);
-        }
-    }
-
-    @ReactMethod
     public void reportRevenue(double amount, String serviceName) {
         Revenue revenue = Revenue.newBuilder(amount, Currency.getInstance("KZT"))
                 .withProductID(serviceName)
@@ -87,6 +78,15 @@ public class AppMetricaModule extends ReactContextBaseJavaModule {
                 .withPayload("{\"plus24\":\"Android\"}")
                 .build();
         YandexMetrica.reportRevenue(revenue);
+    }
+
+    @ReactMethod
+    public void reportEvent(String message, @Nullable ReadableMap params) {
+        if (params != null) {
+            YandexMetrica.reportEvent(message, convertReadableMapToJson(params).toString());
+        } else {
+            YandexMetrica.reportEvent(message);
+        }
     }
 
     @ReactMethod
