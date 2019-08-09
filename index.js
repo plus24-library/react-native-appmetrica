@@ -26,21 +26,21 @@ export default {
     },
 
     /**
+     * Arguments Required
+     * @param {string} amount
+     * @param {string} serviceName
+     */
+    reportRevenue(amount: string, serviceName: string) {
+        AppMetrica.reportRevenue(Number(amount), serviceName);
+    },
+
+    /**
      * Sends a custom event message and additional parameters (optional).
      * @param {string} message
      * @param {object} [params=null]
      */
     reportEvent(message: string, params: ?Object = null) {
         AppMetrica.reportEvent(message, params);
-    },
-
-    /**
-     * Arguments Required
-     * @param {number} amount
-     * @param {string} serviceName
-     */
-    reportRevenue(amount: number, serviceName: string) {
-        AppMetrica.reportRevenue(amount, serviceName);
     },
 
     /**
